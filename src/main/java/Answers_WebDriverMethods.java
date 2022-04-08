@@ -1,3 +1,4 @@
+import org.apache.poi.xssf.usermodel.XSSFRow;
 
 /**
  * WEB DRIVER QUESTION'S ANSWERS
@@ -5,7 +6,7 @@
 public class Answers_WebDriverMethods {
 
     public static Answer[] getAnswers() {
-        return new Answer[] {
+        return new Answer[]{
                 // WEB-DRIVERS BROAD / OVERVIEW
                 new Answer(
                         "Is a WebDriver a Class or an Interface?",
@@ -218,5 +219,61 @@ public class Answers_WebDriverMethods {
                         "Define window() and list its sub-methods.",
                         "Focuses the driver on the window with the given handle."),
         };
+    }
+
+    public static int checkAnswers(XSSFRow spreadSheetRow, int startingColumn) {
+        // SETUP
+        Answer[] answers = getAnswers();
+        int questionCount = answers.length;
+
+        // TRACKERS
+        int score = 0;
+        int questionNumber = 1;
+        int answerIndex = 0;
+
+        // loop column cells
+        for (int colNum = startingColumn; colNum < questionCount + startingColumn; colNum++) {
+            // SETUP
+            String usersAnswer = spreadSheetRow.getCell(colNum) == null ? null : spreadSheetRow.getCell(colNum).toString();
+
+            // PRINT
+            System.out.println(
+                            "\n" +
+                            "***" +
+                            "\n\n" +
+                            "Question " + questionNumber + ":\n" +
+                            "\n" +
+                            answers[answerIndex].getQuestion() + "\n" +
+                            "User's Answer:\n" +
+                            "\n" +
+                            usersAnswer
+            );
+
+            // CORRECT ANSWERS - SUB METHODS
+            String[] subMethods = answers[answerIndex].getSubMethods();
+
+            // TRACKERS
+            questionNumber++;
+            answerIndex++;
+
+            // SKIP IF null
+            if (subMethods == null || usersAnswer == null) continue;
+
+            // CHECK ANSWERS
+            for (String method : subMethods) {
+                System.out.print("looking for: " + method);
+                if (usersAnswer.contains(method)) {
+                    System.out.print(" * found");
+                    score++;
+                }
+                System.out.print("\n");                 // make a line break after the previous 2 prints
+            }
+            System.out.println("Current Score: " + score);
+        }
+
+        System.out.println("WebDriver method score: " + score);
+
+        // RETURN
+        return score;
     }
 }

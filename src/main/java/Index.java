@@ -21,8 +21,10 @@ public class Index {
     public static void checkAnswers() throws IOException {
         // SETUP
         Answer[] answers = Answers_WebDriverMethods.getAnswers();
-        int startingIndexForColumnsWithQuestions = 2;
-        int userScore = 0;
+        int skippingColumns = 2;
+        int score_Total = 0;
+        // scores for diff sections
+        int score_webDriver = 0;
 
         // GET EXCEL FILE & ROW/COL COUNTS
 
@@ -36,7 +38,7 @@ public class Index {
         // ROW/COL COUNTS
         System.out.println(
                 "Rows: " + rowCount +
-                        "\nCols: " + columnCount
+                "\nCols: " + columnCount
         );
 
         // LOOP ROWS AND PRINT HEADER/ROW DATA
@@ -46,35 +48,18 @@ public class Index {
         for (int rowNum = 1; rowNum <= workSheet.getLastRowNum(); rowNum++) {
             // get current row
             XSSFRow currRow = workSheet.getRow(rowNum);
-            // loop through the columns
-            for (int colNum = 0; colNum < columnCount; colNum++) {
-                // print column header
-                System.out.println("\n***\n" + headerRow.getCell(colNum));
 
-                // print row data
-                String usersAnswer = currRow.getCell(colNum) == null ? null : currRow.getCell(colNum).toString();
-                System.out.println("User's Answer: " + usersAnswer + "\n***\n");
-
-                // TODO: check if data is valid
-                if (colNum >= startingIndexForColumnsWithQuestions) {
-                    int answersIndex = colNum - startingIndexForColumnsWithQuestions;
-
-                    String[] subMethods = answers[answersIndex].getSubMethods();
-                    if (subMethods == null || usersAnswer == null) continue;
-                    for (String method : subMethods) {
-                        System.out.print("looking for: " + method);
-                        if (usersAnswer.contains(method)) {
-                            System.out.print(" * found");
-                            userScore += 1;
-                        }
-                        System.out.print("\n"); // make a line break after the previous 2 prints
-                    }
-                    System.out.println("User's Score: " + userScore);
-                }
-
-            }
+            // CHECK ANSWERS
+            score_webDriver = Answers_WebDriverMethods.checkAnswers(currRow, skippingColumns);
         }
 
-        System.out.println("User's Score: " + userScore);
+        score_Total = score_webDriver;
+        System.out.println(
+                "\n********************\n********************\n" +
+                "SCORE:" +
+                "\n WebDriver Methods: " + score_webDriver +
+                "\n----------------------------------" +
+                "\nTotal Score: " + score_Total
+        );
     }
 }

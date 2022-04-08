@@ -62,11 +62,12 @@ public class Index {
                     String[] subMethods = answers[answersIndex].getSubMethods();
                     if (subMethods == null || usersAnswer == null) continue;
                     for (String method : subMethods) {
-                        System.out.println("method looking for: >" + method + "<");
+                        System.out.print("looking for: " + method);
                         if (usersAnswer.contains(method)) {
-                            System.out.println("* found *");
+                            System.out.print(" * found");
                             userScore += 1;
                         }
+                        System.out.print("\n"); // make a line break after the previous 2 prints
                     }
                     System.out.println("User's Score: " + userScore);
                 }

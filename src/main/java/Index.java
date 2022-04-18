@@ -28,7 +28,7 @@ public class Index {
 
         // GET EXCEL FILE & ROW/COL COUNTS
 
-        File file = new File("C:\\Users\\br3nd\\Documents\\Code\\Java - Testing\\Selenium_Test_Answer_Checker\\src\\main\\resources\\Response2.xlsx");
+        File file = new File("C:\\Users\\br3nd\\Documents\\Code\\Java - Testing\\Selenium_Test_Answer_Checker\\src\\main\\resources\\Responses2.xlsx");
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
         XSSFSheet workSheet = workbook.getSheetAt(0);

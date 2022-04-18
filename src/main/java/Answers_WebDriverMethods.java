@@ -11,13 +11,15 @@ public class Answers_WebDriverMethods {
                 new Answer(
                         "BOQ001",
                         "Is a WebDriver a Class or an Interface?",
-                        "Interface"),
+                        "Interface",
+                        new String[] {"Interface"}),
 
                 new Answer(
                         "BOQ002",
                         "What are some WebDriver methods?",
                         null,
-                        new String[]{"close()", "quit()", "manage()", "findElement()", "findElements()", "navigate()", "get()", "switchTo()", "getCurrentUrl()", "getWindowHandles()", "getWindowHandle()", "getPageSource()", "getTitle()"}),
+                        new String[]{"close()", "quit()", "manage()", "findElement()", "findElements()", "navigate()", "get()", "switchTo()", "getCurrentUrl()", "getWindowHandles()", "getWindowHandle()", "getPageSource()", "getTitle()"},
+                        true),
 
 
                 new Answer(
@@ -25,7 +27,8 @@ public class Answers_WebDriverMethods {
                         "What are some SHARED driver capabilities?",
                         null,
                         new String[]{
-                                "browserName()", "browserVersion()", "pageLoadStrategy()", "platformName()", "acceptInsecureCerts()", "timeouts()", "unhandledPromptBehavior()", "setWindowRect()", "strictFileIntractability()", "proxy()"}),
+                                "browserName()", "browserVersion()", "pageLoadStrategy()", "platformName()", "acceptInsecureCerts()", "timeouts()", "unhandledPromptBehavior()", "setWindowRect()", "strictFileIntractability()", "proxy()"},
+                        true),
                 new Answer(
                         "BOQ004",
                         "What locator strategies are you aware of?",
@@ -69,7 +72,8 @@ public class Answers_WebDriverMethods {
 
                                 "@BeforeGroup",
                                 "@AfterGroup"
-                        }),
+                        },
+                        true),
 
                 //
                 // WEB-DRIVER'S METHODS DEFINED & THEIR SUB-METHODS
@@ -80,19 +84,22 @@ public class Answers_WebDriverMethods {
                         "WDM001: Define: FindElement() and findElements(), and list sub-methods of a WebElement.",
                         "Find the 1st WebElement using the given locator. ## Find all elements on the page that match the given locator.",
                         new String[]{
-                                "clear()", "getAttribute()", "findElements()", "click()", "getText()", "sendKeys()", "findElement()", "isDisplayed()", "getTagName()", "isSelected()", "getSize()", "getLocation()", "getCSSValue()", "getRect()", "isEnabled()", "submit()"}),
+                                "clear()", "getAttribute()", "findElements()", "click()", "getText()", "sendKeys()", "findElement()", "isDisplayed()", "getTagName()", "isSelected()", "getSize()", "getLocation()", "getCSSValue()", "getRect()", "isEnabled()", "submit()"},
+                        true),
                 new Answer(
                         "WDM002",
                         "Define: manage() and list its sub-methods.",
                         "Allows us to access the WebDrivers' options ",
                         new String[]{
-                                "window()", "timeouts()"}),
+                                "window()", "timeouts()"},
+                        true),
                 new Answer(
                         "WDM003",
                         "Define: navigate() and list its sub-methods.",
                         "Lets the WebDriver navigate to a given URL as well as giving it access to the Browsers history.",
                         new String[]{
-                                "back()", "forward()", "refresh()", "to()"}),
+                                "back()", "forward()", "refresh()", "to()"},
+                        true),
                 new Answer(
                         "WDM004",
                         "Define: get() and list its sub-methods.",
@@ -107,7 +114,8 @@ public class Answers_WebDriverMethods {
                         "Define: switchTo() and list its sub-methods.",
                         "Moves the WebDrivers focus to a different Frame or Window.",
                         new String[]{
-                                "activeElement()", "alert()", "defaultContent()", "frame()", "parentFrame()", "window()"}),
+                                "activeElement()", "alert()", "defaultContent()", "frame()", "parentFrame()", "window()"},
+                        true),
 
                 new Answer(
                         "WDM007",
@@ -148,14 +156,16 @@ public class Answers_WebDriverMethods {
                         "Define: window() and list its sub-methods.",
                         "Allows managing the current window and size.",
                         new String[]{
-                                "fullscreen()", "getPosition()", "getSize()", "maximize()", "setPosition()", "setSize()"}),
+                                "fullscreen()", "getPosition()", "getSize()", "maximize()", "setPosition()", "setSize()"},
+                        true),
 
                 new Answer(
                         "MAM002",
                         "Define: timeouts() and list its sub-methods.",
                         "Allows us to adjust the time between driver actions.",
                         new String[]{
-                                "implicitlyWait()", "setScriptTimeout()", "pageLoadTimeout()"}),
+                                "implicitlyWait()", "setScriptTimeout()", "pageLoadTimeout()"},
+                        true),
 
                 //
                 // findElement() and findElements() Sub-Methods & Definition
@@ -301,8 +311,8 @@ public class Answers_WebDriverMethods {
                         null,
                         new String[]{
                                 "driver.navigate().to(\"www.google.com\");",
-                                "driver.get(\"www.google.com\");"
-                        }),
+                                "driver.get(\"www.google.com\");"},
+                        true),
 
                 new Answer(
                         "WDC003",
@@ -315,7 +325,8 @@ public class Answers_WebDriverMethods {
                                 "Assert.assertTrue(expectedText.equals(actualText));",
                                 "Assert.assertSame(actualText.equals(expectedText));",
                                 "Assert.assertSame(expectedText.equals(actualText));"
-                        }),
+                        },
+                        true),
 
                 new Answer(
                         "WDC004",
@@ -350,16 +361,17 @@ public class Answers_WebDriverMethods {
                                 "\n" +
                                 "2. Thread.sleep(10)\n" +
                                 "The \"10\" can be any number given.",
-                        new String[] {"Thread.sleep()"}),
+                        new String[] {"Thread.sleep()"},
+                        true),
 
                 new Answer(
                         "SEW002",
                         "SEW002: Which wait is Dynamic?",
                         null,
                         new String[] {
-                                "Implicit wait",
-                                "Explicit wait",
-                                "Fluent wait"
+                                "Implicit",
+                                "Explicit",
+                                "Fluent"
                         }),
 
                 new Answer(
@@ -426,7 +438,7 @@ public class Answers_WebDriverMethods {
                         "JAV004: Is the substring() method inclusive or exclusive?",
                         null,
                         new String[] {
-                                "Inclusive"
+                                "Exclusive"
                         }),
 
                 new Answer(
@@ -554,13 +566,7 @@ public class Answers_WebDriverMethods {
                 new Answer(
                         "JAV014",
                         "JAV014: Why use Encapsulation?",
-                        "",
-                        new String[] {
-                                "Abstraction",
-                                "Polymorphism",
-                                "Inheritance",
-                                "Encapsulation"
-                        }),
+                        ""),
 
                 new Answer(
                         "JAV015",
@@ -657,10 +663,14 @@ public class Answers_WebDriverMethods {
         int questionNumber = 1;
         int answerIndex = 0;
 
+        // CACHE
+        Answer currAnswer;
+
         // loop column cells
         for (int colNum = startingColumn; colNum < questionCount + startingColumn; colNum++) {
             // SETUP
             String usersAnswer = spreadSheetRow.getCell(colNum) == null ? null : spreadSheetRow.getCell(colNum).toString();
+            currAnswer = answers[answerIndex];
 
             // PRINT
             System.out.println(
@@ -669,14 +679,18 @@ public class Answers_WebDriverMethods {
                             "\n\n" +
                             "Question " + questionNumber + ":\n" +
                             "\n" +
-                            answers[answerIndex].getQuestion() + "\n" +
+                            currAnswer.getQuestion() + "\n" +
                             "User's Answer:\n" +
                             "\n" +
-                            usersAnswer
+                            usersAnswer + "\n\n" +
+                            "Correct Answer:\n" +
+                            "\n" +
+                            currAnswer.getDefinition() + "\n"
             );
 
             // CORRECT ANSWERS - SUB METHODS
-            String[] subMethods = answers[answerIndex].getSubMethods();
+            String[] subMethods = currAnswer.getSubMethods();
+            boolean isCaseSensitive = currAnswer.isCaseSensitive();
 
             // TRACKERS
             questionNumber++;
@@ -684,10 +698,11 @@ public class Answers_WebDriverMethods {
 
             // SKIP IF null
             if (subMethods == null || usersAnswer == null) continue;
-
+            usersAnswer = isCaseSensitive ? usersAnswer : usersAnswer.toLowerCase();
             // CHECK ANSWERS
             for (String method : subMethods) {
                 System.out.print("looking for: " + method);
+                method = isCaseSensitive ? method : method.toLowerCase();
                 if (usersAnswer.contains(method)) {
                     System.out.print(" * found");
                     score++;

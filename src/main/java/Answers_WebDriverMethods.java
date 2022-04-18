@@ -1,3 +1,4 @@
+import helper.Print;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 
 /**
@@ -303,7 +304,8 @@ public class Answers_WebDriverMethods {
                 new Answer(
                         "WDC001",
                         "WDC001: Write the code to create a web driver. Call the driver \"driver\" and use Chrome's web driver. Don't add options. Don't add imports. Just write as a single line of code.",
-                        "WebDriver driver = new ChromeDriver();"),
+                        "WebDriver driver = new ChromeDriver();",
+                        new String[] {"WebDriver driver = new ChromeDriver();"}),
 
                 new Answer(
                         "WDC002",
@@ -555,7 +557,8 @@ public class Answers_WebDriverMethods {
                                 "- Abstract classes\n" +
                                 "- interfaces",
                         new String[] {
-                                "Abstract",
+                                "abstract",
+                                "Abstract class",
                                 "interfaces"}),
 
                 new Answer(
@@ -673,20 +676,21 @@ public class Answers_WebDriverMethods {
             currAnswer = answers[answerIndex];
 
             // PRINT
-            System.out.println(
-                    "\n" +
-                            "***" +
-                            "\n\n" +
-                            "Question " + questionNumber + ":\n" +
-                            "\n" +
-                            currAnswer.getQuestion() + "\n" +
-                            "User's Answer:\n" +
-                            "\n" +
-                            usersAnswer + "\n\n" +
-                            "Correct Answer:\n" +
-                            "\n" +
-                            currAnswer.getDefinition() + "\n"
-            );
+            Print.question(questionNumber, currAnswer.getQuestion(), usersAnswer, currAnswer.getDefinition());
+//            System.out.println(
+//                    "\n" +
+//                            "***" +
+//                            "\n\n" +
+//                            "Question " + questionNumber + ":\n" +
+//                            "\n" +
+//                            currAnswer.getQuestion() + "\n" +
+//                            "User's Answer:\n" +
+//                            "\n" +
+//                            usersAnswer + "\n\n" +
+//                            "Correct Answer:\n" +
+//                            "\n" +
+//                            currAnswer.getDefinition() + "\n"
+//            );
 
             // CORRECT ANSWERS - SUB METHODS
             String[] subMethods = currAnswer.getSubMethods();
@@ -701,12 +705,14 @@ public class Answers_WebDriverMethods {
             usersAnswer = isCaseSensitive ? usersAnswer : usersAnswer.toLowerCase();
             // CHECK ANSWERS
             for (String method : subMethods) {
-                System.out.print("looking for: " + method);
+//                System.out.print("looking for: " + method);
                 method = isCaseSensitive ? method : method.toLowerCase();
                 if (usersAnswer.contains(method)) {
-                    System.out.print(" * found");
+                    Print.methodFound(method);
+//                    System.out.print(" * found");
                     score++;
                 }
+                else Print.methodNotFound(method);
                 System.out.print("\n");                 // make a line break after the previous 2 prints
             }
             System.out.println("Current Score: " + score);

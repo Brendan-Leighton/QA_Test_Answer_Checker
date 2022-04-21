@@ -589,7 +589,7 @@ public class Answers_WebDriverMethods {
                 //
 
                 new Answer(
-                        "",
+                        "API001",
                         "API001: What is the meaning of the status codes in the 100's?",
                         "Answer: Informational",
                         new String[] {
@@ -597,7 +597,7 @@ public class Answers_WebDriverMethods {
                         }),
 
                 new Answer(
-                        "",
+                        "API002",
                         "API002: What is the meaning of the status codes in the 200's?",
                         "Answer: Success",
                         new String[] {
@@ -605,7 +605,7 @@ public class Answers_WebDriverMethods {
                         }),
 
                 new Answer(
-                        "",
+                        "API003",
                         "API003: What is the meaning of the status codes in the 300's?",
                         "Answer: Redirect",
                         new String[] {
@@ -613,7 +613,7 @@ public class Answers_WebDriverMethods {
                         }),
 
                 new Answer(
-                        "",
+                        "API004",
                         "API004: What is the meaning of the status codes in the 400's?",
                         "Answer: Client Error",
                         new String[] {
@@ -621,7 +621,7 @@ public class Answers_WebDriverMethods {
                         }),
 
                 new Answer(
-                        "",
+                        "API005",
                         "API005: What is the meaning of the status codes in the 500's?",
                         "Answer: Server Error",
                         new String[] {
@@ -629,7 +629,7 @@ public class Answers_WebDriverMethods {
                         }),
 
                 new Answer(
-                        "",
+                        "API006",
                         "API006: What goes in the header of a RESTful API request?",
                         "Answers:\n" +
                                 "- Authorization: Carries credentials containing the authentication information of the client for the resource being requested.\n" +
@@ -669,7 +669,7 @@ public class Answers_WebDriverMethods {
         // CACHE
         Answer currAnswer;
 
-        // loop column cells
+        // loop column cells (each cell is an answer provided by the test taker)
         for (int colNum = startingColumn; colNum < questionCount + startingColumn; colNum++) {
             // SETUP
             String usersAnswer = spreadSheetRow.getCell(colNum) == null ? null : spreadSheetRow.getCell(colNum).toString();
@@ -677,20 +677,6 @@ public class Answers_WebDriverMethods {
 
             // PRINT
             Print.question(questionNumber, currAnswer.getQuestion(), usersAnswer, currAnswer.getDefinition());
-//            System.out.println(
-//                    "\n" +
-//                            "***" +
-//                            "\n\n" +
-//                            "Question " + questionNumber + ":\n" +
-//                            "\n" +
-//                            currAnswer.getQuestion() + "\n" +
-//                            "User's Answer:\n" +
-//                            "\n" +
-//                            usersAnswer + "\n\n" +
-//                            "Correct Answer:\n" +
-//                            "\n" +
-//                            currAnswer.getDefinition() + "\n"
-//            );
 
             // CORRECT ANSWERS - SUB METHODS
             String[] subMethods = currAnswer.getSubMethods();
@@ -703,22 +689,20 @@ public class Answers_WebDriverMethods {
             // SKIP IF null
             if (subMethods == null || usersAnswer == null) continue;
             usersAnswer = isCaseSensitive ? usersAnswer : usersAnswer.toLowerCase();
+
             // CHECK ANSWERS
             for (String method : subMethods) {
-//                System.out.print("looking for: " + method);
+
                 method = isCaseSensitive ? method : method.toLowerCase();
+
                 if (usersAnswer.contains(method)) {
                     Print.methodFound(method);
-//                    System.out.print(" * found");
                     score++;
                 }
                 else Print.methodNotFound(method);
-                System.out.print("\n");                 // make a line break after the previous 2 prints
             }
             System.out.println("Current Score: " + score);
         }
-
-        System.out.println("WebDriver method score: " + score);
 
         // RETURN
         return score;

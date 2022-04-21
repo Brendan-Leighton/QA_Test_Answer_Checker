@@ -13,8 +13,7 @@ public class Index {
     }
 
     /**
-     * Rows count 0-based
-     * Cols count start @ 1
+     * Rows count 0-based Cols count start @ 1
      *
      * @throws IOException Comes from XSSF stuff
      */
@@ -28,7 +27,7 @@ public class Index {
 
         // GET EXCEL FILE & ROW/COL COUNTS
 
-        File file = new File("C:\\Users\\br3nd\\Documents\\Code\\Java - Testing\\Selenium_Test_Answer_Checker\\src\\main\\resources\\Responses2.xlsx");
+        File file = new File("C:\\Users\\br3nd\\OneDrive\\Documents\\Code\\Java - Testing\\Selenium_Test_Answer_Checker\\src\\main\\resources\\Responses2.xlsx");
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
         XSSFSheet workSheet = workbook.getSheetAt(0);
@@ -57,9 +56,8 @@ public class Index {
         System.out.println(
                 "\n********************\n********************\n" +
                 "SCORE:" +
-                "\n WebDriver Methods: " + score_webDriver +
-                "\n----------------------------------" +
-                "\nTotal Score: " + score_Total
+                "\nTotal Score: " + score_Total +
+                "\n********************\n********************\n"
         );
     }
 }

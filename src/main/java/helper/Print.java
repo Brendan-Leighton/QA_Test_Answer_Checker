@@ -22,39 +22,21 @@ public class Print {
     public static final String CYAN = "\u001B[36m";
     public static final String WHITE = "\u001B[37m";
 
-//    public static void printCode(String code, Object output) {
-//        System.out.println(
-//                "INPUT:\n" + GREEN + code + COLOR_RESET +
-//                        "\nOUTPUT:\n" + GREEN + output + COLOR_RESET + "\n"
-//        );
-//    }
-//
-//    public static void printQue(Queue queue, String title) {
-//        System.out.println(
-//                "Queue: "+title+'\n'+CYAN+queue+COLOR_RESET
-//        );
-//    }
-//
-//    public static void header(String title) {
-//
-//        System.out.println("\n***************\n\n .:: " + title + " ::.\n");
-//    }
-
     public static void methodFound(String method) {
         System.out.println("Looking For " + GREEN + method + COLOR_RESET + " * found");
     }
 
     public static void methodNotFound(String method) {
-        System.out.println("Looking For " + RED + method + COLOR_RESET);
+        System.out.println("Looking For " + RED + method + COLOR_RESET + "\n");
     }
 
     public static void question(int questionNumber, String question, String usersAnswer, String correctDefinition) {
         System.out.println(
                 "\n" +
-                        WHITE_BACKGROUND + BLACK +
+                WHITE_BACKGROUND + BLACK +
                 "***" +
-                "\n" + COLOR_RESET +
-                        WHITE +
+                "\n" +
+                COLOR_RESET + WHITE +
                 "\nQuestion " + questionNumber + ":\n" +
                 "\n" +
                 CYAN +
@@ -63,10 +45,11 @@ public class Print {
                 "User's Answer:\n" +
                 "\n" +
                 usersAnswer + "\n\n" +
-                        YELLOW +
+                YELLOW +
                 "Correct Answer:\n" +
                 "\n" +
-                correctDefinition + "\n" + COLOR_RESET
+                correctDefinition + "\n" +
+                COLOR_RESET
         );
     }
 }

@@ -13,6 +13,7 @@ import java.util.Map;
 public class Answers {
 
     // COMMENTED CODE - left here in case needed later.
+
     // ANSWER CLASSES separated.
 //    Answers_API_Overview api = new Answers_API_Overview();
 //    Answers_JavaOOP_Overview javaOOP = new Answers_JavaOOP_Overview();
@@ -73,7 +74,6 @@ public class Answers {
         // TRACKERS
         int score = 0;
         int questionNumber = 1;
-        int answerIndex = 0;
 
         // CACHE
         Answer currCorrectAnswer;
@@ -84,7 +84,7 @@ public class Answers {
             String usersAnswer = usersAnswers.getCell(colNum) == null ? null : usersAnswers.getCell(colNum).toString();
             // null check
             if (usersAnswer == null) continue;
-            String answerID = usersAnswer.substring(0, 6);
+            String answerID = headers.getCell(colNum).toString().substring(0, 6);
             System.out.println("answerID: " + answerID);
             currCorrectAnswer = answers.get(answerID);
 
@@ -93,7 +93,8 @@ public class Answers {
                     questionNumber,
                     currCorrectAnswer == null ? headers.getCell(colNum).toString() : currCorrectAnswer.getQuestion(),
                     usersAnswer,
-                    currCorrectAnswer.getDefinition());
+                    currCorrectAnswer == null ? "ERROR WITH currCorrectAnswer > Answers.java" :
+                            currCorrectAnswer.getDefinition());
 
             // CORRECT ANSWERS - SUB METHODS
             String[] subMethods = currCorrectAnswer.getSubMethods();
@@ -101,7 +102,6 @@ public class Answers {
 
             // TRACKERS
             questionNumber++;
-            answerIndex++;
 
             // null check
             if (subMethods == null) continue;

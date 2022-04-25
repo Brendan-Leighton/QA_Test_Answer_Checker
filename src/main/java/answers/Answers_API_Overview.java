@@ -12,7 +12,7 @@ public class Answers_API_Overview extends iAnswers {
                 new Answer(
                         "API001",
                         "API001: What is the meaning of the status codes in the 100's?",
-                        "helper.Answer: Informational",
+                        "Informational",
                         new String[]{
                                 "Informational"
                         }),
@@ -20,7 +20,7 @@ public class Answers_API_Overview extends iAnswers {
                 new Answer(
                         "API002",
                         "API002: What is the meaning of the status codes in the 200's?",
-                        "helper.Answer: Success",
+                        "Success",
                         new String[]{
                                 "Success"
                         }),
@@ -28,7 +28,7 @@ public class Answers_API_Overview extends iAnswers {
                 new Answer(
                         "API003",
                         "API003: What is the meaning of the status codes in the 300's?",
-                        "helper.Answer: Redirect",
+                        "Redirect",
                         new String[]{
                                 "Redirect"
                         }),
@@ -36,7 +36,7 @@ public class Answers_API_Overview extends iAnswers {
                 new Answer(
                         "API004",
                         "API004: What is the meaning of the status codes in the 400's?",
-                        "helper.Answer: Client Error",
+                        "Client Error",
                         new String[]{
                                 "Client"
                         }),
@@ -44,7 +44,7 @@ public class Answers_API_Overview extends iAnswers {
                 new Answer(
                         "API005",
                         "API005: What is the meaning of the status codes in the 500's?",
-                        "helper.Answer: Server Error",
+                        "Server Error",
                         new String[]{
                                 "Server"
                         }),

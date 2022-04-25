@@ -35,7 +35,7 @@ public class Answers_Selenium_WebDriverWaits extends iAnswers {
                 new Answer(
                         "SEW003",
                         "SEW003: What is the difference between Explicit wait and Implicit wait?",
-                        "helper.Answer: The difference is\n" +
+                        "The difference is\n" +
                                 "- the maximum time the wait will occur (implicit is a set time while explicit could be the set time or possibly shorter if a condition is met)\n" +
                                 "- Number of occurrences. Implicit wait last for the entire program while explicit wait only runs once.\n" +
                                 "\n" +

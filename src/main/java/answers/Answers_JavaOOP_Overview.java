@@ -78,7 +78,7 @@ public class Answers_JavaOOP_Overview extends iAnswers {
                 new Answer(
                         "JAV007",
                         "JAV007: What are the 2 keywords used to extend a class?",
-                        "helper.Answer: \"extends\" & \"implements\"\n" +
+                        "\"extends\" & \"implements\"\n" +
                                 "\n" +
                                 "Extends:\n" +
                                 "copies fields and methods from another class.\n" +
@@ -115,14 +115,14 @@ public class Answers_JavaOOP_Overview extends iAnswers {
                 new Answer(
                         "JAV010",
                         "JAV010: What is Abstraction?",
-                        "helper.Answer: Removing code and referencing it instead.\n" +
+                        "Removing code and referencing it instead.\n" +
                                 "\n" +
                                 "Remove logic from some code and put it into it's own class/method and then reference that class/method instead."),
 
                 new Answer(
                         "JAV011",
                         "JAV011: Why use Abstraction?",
-                        "helper.Answer: To hide complexity that muddies up the code.\n" +
+                        "To hide complexity that muddies up the code.\n" +
                                 "\n" +
                                 "Example:\n" +
                                 "turn this...\n" +
@@ -159,7 +159,7 @@ public class Answers_JavaOOP_Overview extends iAnswers {
                 new Answer(
                         "JAV013",
                         "JAV013: What is Encapsulation?",
-                        "helper.Answer: Storing related fields and methods together."),
+                        "Storing related fields and methods together."),
 
                 new Answer(
                         "JAV014",

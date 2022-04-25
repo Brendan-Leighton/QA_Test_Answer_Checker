@@ -22,13 +22,13 @@ public class Index {
      */
     public static void checkAnswers() throws IOException {
         // SETUP
-        final Map<String, Answer> answers = new Answers().getAnswers();
-        int skippingColumns = 2;
-        int score_Total = 0;
+        final Map<String, Answer> answers = new Answers().getAnswers();  //
+        int skippingColumns = 2;  // skip beginning cols that include data such as the Date the test was taken
+        int score_Total = 0;      // test-takers total score
 
         // GET EXCEL FILE & ROW/COL COUNTS
 
-        File file = new File("C:\\Users\\br3nd\\OneDrive\\Documents\\Code\\Java - Testing\\Selenium_Test_Answer_Checker\\src\\main\\resources\\Responses2.xlsx");
+        File file = new File("C:\\Users\\br3nd\\_Code\\Java\\Selenium_Test_Answer_Checker\\src\\main\\resources\\Responses2.xlsx");
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
         XSSFSheet workSheet = workbook.getSheetAt(0);

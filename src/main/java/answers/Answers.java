@@ -4,95 +4,71 @@ import helper.Print;
 import helper.Answer;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * WEB DRIVER QUESTION'S ANSWERS
  */
-public class Answers_WebDriverMethods {
+public class Answers {
 
-    public static Answer[] getAnswers() {
-        return new Answer[]{
-                //
-                // Java & OOP
-                //
+    // COMMENTED CODE - left here in case needed later.
+    // ANSWER CLASSES separated.
+//    Answers_API_Overview api = new Answers_API_Overview();
+//    Answers_JavaOOP_Overview javaOOP = new Answers_JavaOOP_Overview();
+//    Answers_Selenium_Overview selenium = new Answers_Selenium_Overview();
+//    Answers_Selenium_WebDriverCode seleniumWebDriverCode = new Answers_Selenium_WebDriverCode();
+//    Answers_Selenium_WebDriverMethods seleniumWebDriverMethods = new Answers_Selenium_WebDriverMethods();
+//    Answers_Selenium_WebDriverSubMethods_Manage seleniumWebDriverSubMethodsManage = new Answers_Selenium_WebDriverSubMethods_Manage();
+//    Answers_Selenium_WebDriverSubMethods_Navigate seleniumWebDriverSubMethodsNavigate = new Answers_Selenium_WebDriverSubMethods_Navigate();
+//    Answers_Selenium_WebDriverSubMethods_SwitchTo seleniumWebDriverSubMethodsSwitchTo = new Answers_Selenium_WebDriverSubMethods_SwitchTo();
+//    Answers_Selenium_WebDriverWaits seleniumWebDriverWaits = new Answers_Selenium_WebDriverWaits();
+//    Answers_Selenium_WebElementMethods seleniumWebElementMethods = new Answers_Selenium_WebElementMethods();
+//    Answers_TestNG_Overview testNGOverview = new Answers_TestNG_Overview();
+
+    // ANSWER CLASSES - add new answer classes here
+    iAnswers[] answerClasses = new iAnswers[]{
+            new Answers_API_Overview(),
+            new Answers_JavaOOP_Overview(),
+            new Answers_Selenium_Overview(),
+            new Answers_Selenium_WebDriverCode(),
+            new Answers_Selenium_WebDriverMethods(),
+            new Answers_Selenium_WebDriverSubMethods_Manage(),
+            new Answers_Selenium_WebDriverSubMethods_Navigate(),
+            new Answers_Selenium_WebDriverSubMethods_SwitchTo(),
+            new Answers_Selenium_WebDriverWaits(),
+            new Answers_Selenium_WebElementMethods(),
+            new Answers_TestNG_Overview()
+    };
 
 
+    // FIELDS
+    private static Map<String, Answer> answers = null;
 
-                //
-                // API
-                //
-
-                new Answer(
-                        "API001",
-                        "API001: What is the meaning of the status codes in the 100's?",
-                        "helper.Answer: Informational",
-                        new String[]{
-                                "Informational"
-                        }),
-
-                new Answer(
-                        "API002",
-                        "API002: What is the meaning of the status codes in the 200's?",
-                        "helper.Answer: Success",
-                        new String[]{
-                                "Success"
-                        }),
-
-                new Answer(
-                        "API003",
-                        "API003: What is the meaning of the status codes in the 300's?",
-                        "helper.Answer: Redirect",
-                        new String[]{
-                                "Redirect"
-                        }),
-
-                new Answer(
-                        "API004",
-                        "API004: What is the meaning of the status codes in the 400's?",
-                        "helper.Answer: Client Error",
-                        new String[]{
-                                "Client"
-                        }),
-
-                new Answer(
-                        "API005",
-                        "API005: What is the meaning of the status codes in the 500's?",
-                        "helper.Answer: Server Error",
-                        new String[]{
-                                "Server"
-                        }),
-
-                new Answer(
-                        "API006",
-                        "API006: What goes in the header of a RESTful API request?",
-                        "Answers:\n" +
-                                "- Authorization: Carries credentials containing the authentication information of the client for the resource being requested.\n" +
-                                "\n" +
-                                "- WWW-Authenticate: This is sent by the server if it needs a form of authentication before it can respond with the actual resource being requested. Often sent along with a response code of 401, which means ‘unauthorized’.\n" +
-                                "\n" +
-                                "- Accept-Charset: This is a header which is set with the request and tells the server about which character sets are acceptable by the client.\n" +
-                                "\n" +
-                                "- Content-Type: Indicates the media type (text/html or text/JSON) of the response sent to the client by the server, this will help the client in processing the response body correctly.\n" +
-                                "\n" +
-                                "- Cache-Control: This is the cache policy defined by the server for this response, a cached response can be stored by the client and re-used till the time defined by the Cache-Control header.",
-                        new String[]{
-                                "Authorization",
-                                "WWW-Authenticate",
-                                "WWW Authenticate",
-                                "Authenticate",
-                                "Accept-Charset",
-                                "Accept Charset",
-                                "Content-Type",
-                                "Content Type",
-                                "Cache-Control",
-                                "Cache Control"
-                        }),
-        };
+    // METHODS
+    public Map<String, Answer> getAnswers() {
+        if (answers == null) answers = mapAnswers();
+        return answers;
     }
 
-    public static int checkAnswers(XSSFRow spreadSheetRow, int startingColumn) {
+    private Map<String, Answer> mapAnswers() {
         // SETUP
-        Answer[] answers = getAnswers();
-        int questionCount = answers.length;
+        Map<String, Answer> result = new HashMap<>();
+
+        // INTERACT
+        for (iAnswers answerClass : answerClasses) {
+            for (Answer answer : answerClass.answers) {
+                result.put(answer.getId(), answer);
+            }
+        }
+
+        // RETURN
+        return result;
+    }
+
+    public static int checkAnswers(XSSFRow headers, XSSFRow usersAnswers, int startingColumn) {
+        // SETUP
+        int questionCount = answers.size();
 
         // TRACKERS
         int score = 0;
@@ -100,23 +76,28 @@ public class Answers_WebDriverMethods {
         int answerIndex = 0;
 
         // CACHE
-        Answer currAnswer;
+        Answer currCorrectAnswer;
 
         // loop column cells (each cell is an answer provided by the test taker)
         for (int colNum = startingColumn; colNum < questionCount + startingColumn; colNum++) {
             // SETUP
-            String usersAnswer = spreadSheetRow.getCell(colNum) == null ? null : spreadSheetRow.getCell(colNum).toString();
+            String usersAnswer = usersAnswers.getCell(colNum) == null ? null : usersAnswers.getCell(colNum).toString();
             // null check
             if (usersAnswer == null) continue;
             String answerID = usersAnswer.substring(0, 6);
-            currAnswer = answers[answerIndex];
+            System.out.println("answerID: " + answerID);
+            currCorrectAnswer = answers.get(answerID);
 
             // PRINT
-            Print.question(questionNumber, currAnswer.getQuestion(), usersAnswer, currAnswer.getDefinition());
+            Print.question(
+                    questionNumber,
+                    currCorrectAnswer == null ? headers.getCell(colNum).toString() : currCorrectAnswer.getQuestion(),
+                    usersAnswer,
+                    currCorrectAnswer.getDefinition());
 
             // CORRECT ANSWERS - SUB METHODS
-            String[] subMethods = currAnswer.getSubMethods();
-            boolean isCaseSensitive = currAnswer.isCaseSensitive();
+            String[] subMethods = currCorrectAnswer.getSubMethods();
+            boolean isCaseSensitive = currCorrectAnswer.isCaseSensitive();
 
             // TRACKERS
             questionNumber++;

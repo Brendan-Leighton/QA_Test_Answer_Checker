@@ -1,3 +1,5 @@
+import answers.Answers;
+import helper.Answer;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -5,6 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Map;
 
 public class Index {
 
@@ -19,11 +22,9 @@ public class Index {
      */
     public static void checkAnswers() throws IOException {
         // SETUP
-        Answer[] answers = Answers_WebDriverMethods.getAnswers();
+        final Map<String, Answer> answers = new Answers().getAnswers();
         int skippingColumns = 2;
         int score_Total = 0;
-        // scores for diff sections
-        int score_webDriver = 0;
 
         // GET EXCEL FILE & ROW/COL COUNTS
 
@@ -49,10 +50,9 @@ public class Index {
             XSSFRow currRow = workSheet.getRow(rowNum);
 
             // CHECK ANSWERS
-            score_webDriver = Answers_WebDriverMethods.checkAnswers(currRow, skippingColumns);
+            score_Total = Answers.checkAnswers(headerRow, currRow, skippingColumns);
         }
 
-        score_Total = score_webDriver;
         System.out.println(
                 "\n********************\n********************\n" +
                 "SCORE:" +

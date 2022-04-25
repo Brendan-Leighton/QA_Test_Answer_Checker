@@ -27,7 +27,7 @@ public class Print {
     }
 
     public static void methodNotFound(String method) {
-        System.out.println("Looking For " + RED + method + COLOR_RESET + "\n");
+        System.out.println("Looking For " + RED + method + COLOR_RESET);
     }
 
     public static void question(int questionNumber, String question, String usersAnswer, String correctDefinition) {
